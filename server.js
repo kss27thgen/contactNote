@@ -1,5 +1,13 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
+const connectDB = require("./config/db");
+
+// Connect DB
+connectDB();
+
+// Init middleware
+app.use(express.json({ extended: false }));
 
 // Define routes
 app.use("/api/users", require("./routes/users"));
